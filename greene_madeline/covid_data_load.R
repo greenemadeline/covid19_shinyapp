@@ -26,9 +26,6 @@ nyt_raw <- read_csv(nyt_usa_data_url)
 nyt_raw %>%
   pivot_longer(cases:deaths, names_to = "covid_type", values_to = "cumulative_number") -> nyt_data
 
-nyt_data %>%
-  mutate(cumulative_number = if_else(cumulative_number == 0, 1e-10, cumulative_number)) -> nyt_data
-
 
 #read in the data sets
 jhu_confirmed_raw <- read_csv(jhu_confirmed_global_url)
@@ -54,8 +51,7 @@ jhu_deaths_raw %>%
 
 full_join(jhu_cases, jhu_deaths) %>%
   pivot_longer(cases:deaths, names_to = "covid_type", values_to = "cumulative_number") %>%
-  mutate(date = lubridate::mdy(date)) %>%
-  mutate(cumulative_number = if_else(cumulative_number == 0, 1e-10, cumulative_number)) -> jhu_data
+  mutate(date = lubridate::mdy(date)) -> jhu_data
 
 
 
