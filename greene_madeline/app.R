@@ -72,7 +72,9 @@ ui <- shinyUI(
                     
                     # All output for NYT goes in here:
                     mainPanel(
-                        plotlyOutput("nyt_plot", height = "600px")
+                        plotlyOutput("nyt_plot", height = "600px"),
+             hr(),
+            print("place cursor over specific data point for info")
                     ) # closes NYT mainPanel. Note: we DO NOT use a comma here, since the next line closes a previous function  
             ), # closes tabPanel for NYT data
             
@@ -119,7 +121,11 @@ ui <- shinyUI(
                      
                      # All output for JHU goes in here:
                      mainPanel(
-                        plotlyOutput("jhu_plot", height = "600px")
+                        plotlyOutput("jhu_plot", height = "600px"),
+                        
+                        hr(),
+                        print("place cursor over specific data point for info")
+                        
                      ) # closes JHU mainPanel     
             )# closes tabPanel for JHU data
             
