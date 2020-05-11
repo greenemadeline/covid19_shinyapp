@@ -5,6 +5,6 @@ account: madeline-greene
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2269710
-bundleId: 3133839
+bundleId: 3133886
 url: https://madeline-greene.shinyapps.io/covid-19-visualizations/
-when: 1589234334.83941
+when: 1589235051.09809

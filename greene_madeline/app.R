@@ -58,11 +58,15 @@ ui <- shinyUI(
                         #actionbuttons for a hyperlink to the data and my github
                         actionButton("button", label = "NYT Data", onclick = "window.open('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv')"), 
                         
+                        
                         hr(),
                         print("My code available at : https://github.com/greenemadeline/covid19_shinyapp"),
                         
+                        br(),
+                        print("Contact me : www.linkedin.com/in/madeline-greene-89b6aa178"),
+                        
                         br(),br(),
-                        print("Contact me : www.linkedin.com/in/madeline-greene-89b6aa178")
+                        print("Data derived from the New York Times"),
                         
                         
                         
@@ -107,12 +111,16 @@ ui <- shinyUI(
                          actionButton("button", label = "JHU Data Confirmed Global Cases Data", onclick = "window.open('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')"), 
                          actionButton("button", label = "JHU Data Global Deaths Data", onclick = "window.open('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv')"),
                         
-                         
+                
                          hr(),
                          print("My code available at : https://github.com/greenemadeline/covid19_shinyapp"),
                          
+                         br(),
+                         print("Contact me : www.linkedin.com/in/madeline-greene-89b6aa178"),
+                         
                          br(),br(),
-                         print("Contact me : www.linkedin.com/in/madeline-greene-89b6aa178")
+                         print("Data derived from John Hopkins University"),
+                         
                          
                          
                     
@@ -230,9 +238,6 @@ server <- function(input, output, session) {
                legend.text = element_text(size = 13)) 
          
      
-     print(
-         ggplotly(
-             myplot_nyt))
                     
     })
     
