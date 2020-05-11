@@ -24,7 +24,8 @@ source("covid_data_load.R") ## This line runs the Rscript "covid_data_load.R", w
 # UI --------------------------------
 ui <- shinyUI(
         navbarPage(theme = shinytheme("simplex"), #specific theme
-                   title = "Covid-19 Visualizations", #unique title
+                   title = "Covid-19 Visualizations",#unique title
+                 
             
             ## All UI for NYT goes in here:
             tabPanel("NYT data visualization", ## do not change this name
@@ -56,9 +57,16 @@ ui <- shinyUI(
                                     selected = "Classic"),
                         #actionbuttons for a hyperlink to the data and my github
                         actionButton("button", label = "NYT Data", onclick = "window.open('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv')"), 
-                        actionButton("button", label = "My Github Code", onclick = "window.open('https://github.com/greenemadeline/datascience_final_assignment/tree/master/greene_madeline')")
+                        
+                        hr(),
+                        print("My code available at : https://github.com/greenemadeline/covid19_shinyapp"),
+                        
+                        br(),br(),
+                        print("Contact me : www.linkedin.com/in/madeline-greene-89b6aa178")
                         
                         
+                        
+        
                         
                     ), # closes NYT sidebarPanel. Note: we DO need a comma here, since the next line opens a new function     
                     
@@ -96,10 +104,15 @@ ui <- shinyUI(
                          #actionbuttons for a hyperlink to the data and my github
                          actionButton("button", label = "JHU Data Confirmed Global Cases Data", onclick = "window.open('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')"), 
                          actionButton("button", label = "JHU Data Global Deaths Data", onclick = "window.open('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv')"),
-                         actionButton("button", label = "My Github Code", onclick = "window.open('https://github.com/greenemadeline/datascience_final_assignment/tree/master/greene_madeline')")
+                        
+                         
+                         hr(),
+                         print("My code available at : https://github.com/greenemadeline/covid19_shinyapp"),
+                         
+                         br(),br(),
+                         print("Contact me : www.linkedin.com/in/madeline-greene-89b6aa178")
                          
                          
-
                     
                          
                      ), # closes JHU sidebarPanel     
@@ -109,6 +122,7 @@ ui <- shinyUI(
                         plotOutput("jhu_plot", height = "600px")
                      ) # closes JHU mainPanel     
             )# closes tabPanel for JHU data
+            
             
             
     ) # closes navbarPage
