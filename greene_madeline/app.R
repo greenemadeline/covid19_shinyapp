@@ -224,7 +224,9 @@ server <- function(input, output, session) {
     ## Define a reactive for subsetting the JHU data
     jhu_data_subset <- reactive({
         jhu_data %>%
-            filter(country_or_region == input$which_country) -> jhu_country
+            filter(country_or_region == input$which_country)  %>%
+            group_by(date, covid_type) %>%
+            summarize(y = sum(cumulative_number))  -> jhu_country
         
         
         #option for starting x on 100th day
@@ -250,7 +252,7 @@ server <- function(input, output, session) {
     output$jhu_plot <- renderPlot({
         jhu_data_subset() %>%
             ggplot(aes(x = x,
-                       y = cumulative_number,
+                       y = y,
                        color = covid_type,
                        group = covid_type)) +
             geom_point() +
