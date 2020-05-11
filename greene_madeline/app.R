@@ -14,7 +14,7 @@ library(shinythemes)
 library(tidyverse)
 library(colourpicker)
 library(ggthemes)
-library(usmap)
+library(plotly)
 
 
 
@@ -72,7 +72,7 @@ ui <- shinyUI(
                     
                     # All output for NYT goes in here:
                     mainPanel(
-                        plotOutput("nyt_plot", height = "600px")
+                        plotlyOutput("nyt_plot", height = "600px")
                     ) # closes NYT mainPanel. Note: we DO NOT use a comma here, since the next line closes a previous function  
             ), # closes tabPanel for NYT data
             
@@ -119,7 +119,7 @@ ui <- shinyUI(
                      
                      # All output for JHU goes in here:
                      mainPanel(
-                        plotOutput("jhu_plot", height = "600px")
+                        plotlyOutput("jhu_plot", height = "600px")
                      ) # closes JHU mainPanel     
             )# closes tabPanel for JHU data
             
@@ -179,7 +179,7 @@ server <- function(input, output, session) {
     })
     
     ## Define your renderPlot({}) for NYT panel that plots the reactive variable. ALL PLOTTING logic goes here.
-    output$nyt_plot <- renderPlot({
+    output$nyt_plot <- renderPlotly({
         nyt_data_subset() %>%
             ggplot(aes(x = x, 
                        y = y, 
@@ -223,7 +223,11 @@ server <- function(input, output, session) {
                legend.title = element_text(size = 13),
                legend.text = element_text(size = 13)) 
          
-                
+     
+     print(
+         ggplotly(
+             myplot_nyt))
+                    
     })
     
     
@@ -263,7 +267,7 @@ server <- function(input, output, session) {
     })
     
     ## Define your renderPlot({}) for JHU panel that plots the reactive variable. ALL PLOTTING logic goes here.
-    output$jhu_plot <- renderPlot({
+    output$jhu_plot <- renderPlotly({
         jhu_data_subset() %>%
             ggplot(aes(x = x,
                        y = y,
